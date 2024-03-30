@@ -3,7 +3,7 @@ from pymongo import MongoClient
 import datetime
 from bson.objectid import ObjectId
 import pandas as pd
-client = MongoClient('mongodb+srv://srmece2020:Room308@cluster0.jyel19j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', 27017)
+client = MongoClient('mongodb+srv://DB_USERNAME:KEY@cluster0.jyel19j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', 27017)
 try: 
     db = client.Login
     db.create_collection('Users') 
