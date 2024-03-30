@@ -5,7 +5,7 @@ from bson.objectid import ObjectId
 import pandas as pd
 import certifi
 ca = certifi.where()
-client = MongoClient('mongodb+srv://DB_USERNAME:KEY@cluster0.jyel19j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', tlsCAFile=ca)
+client = MongoClient(f'mongodb+srv://{DB_USERNAME}:{KEY}@cluster0.jyel19j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', tlsCAFile=ca)
 try: 
     db = client.Login
     db.create_collection('Users') 
