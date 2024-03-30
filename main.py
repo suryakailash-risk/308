@@ -24,9 +24,6 @@ hide_streamlit_style = """
                 </style>
                 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
-import streamlit as st
-from st_login_form import login_form
 st.title('Budget Application')
 st.sidebar.title('Menu')
 menu = st.sidebar.radio('Select an option', ['You Owe Me', 'Add Split','Person','I Owe You','My Budget'])
