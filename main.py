@@ -5,6 +5,8 @@ from bson.objectid import ObjectId
 import pandas as pd
 import certifi
 ca = certifi.where()
+DB_USERNAME=**st.secrets.db_credentials['username']
+KEY=***st.secrets.db_credentials['password']
 client = MongoClient(f'mongodb+srv://{DB_USERNAME}:{KEY}@cluster0.jyel19j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', tlsCAFile=ca)
 try: 
     db = client.Login
