@@ -160,23 +160,24 @@ elif menu == 'Add Split':
 
 
 elif menu == 'Person':
-    person_id = st.text_input('Enter Person Name')
-    person_username = st.text_input('Enter Person Username')
-    person_phone = st.text_input('Enter Person Phone')
-    person_email = st.text_input('Enter Person Email')
-    person_roomid = st.text_input('Enter Person RoomID')
-    person_password = st.text_input('Enter Person Password')
-    if  st.button('Save Details'):
-        collection = db.Users
-        new_user = {
-        "name":person_id,
-        "username": person_username,
-        "phone_number": person_phone,
-        "emailid": person_email,
-        "roomid":person_roomid,
-        "password":person_password
-        }
-        result = collection.insert_one(new_user)
+    if tempusername=="surya":
+        person_id = st.text_input('Enter Person Name')
+        person_username = st.text_input('Enter Person Username')
+        person_phone = st.text_input('Enter Person Phone')
+        person_email = st.text_input('Enter Person Email')
+        person_roomid = st.text_input('Enter Person RoomID')
+        person_password = st.text_input('Enter Person Password')
+        if  st.button('Save Details'):
+            collection = db.Users
+            new_user = {
+            "name":person_id,
+            "username": person_username,
+            "phone_number": person_phone,
+            "emailid": person_email,
+            "roomid":person_roomid,
+            "password":person_password
+            }
+            result = collection.insert_one(new_user)
 
 elif menu == 'I Owe You':
     collection = db.Split
