@@ -149,8 +149,8 @@ elif menu == 'Add Split':
                 st.number_input(f"Number Field {i}", key=f"number_field_{i}")
     text_inputs = [st.session_state[f"text_field_{i}"] for i in range(1, st.session_state.num_field_pairs + 1)]
     number_inputs = [st.session_state[f"number_field_{i}"] for i in range(1, st.session_state.num_field_pairs + 1)]
-    st.write("Current Text Inputs:", text_inputs)
-    st.write("Current Number Inputs:", number_inputs)
+    # st.write("Current Text Inputs:", text_inputs)
+    # st.write("Current Number Inputs:", number_inputs)
     paid_by= st.selectbox(
     'Who paid',res)
     if st.button('Add Item'):
@@ -165,6 +165,7 @@ elif menu == 'Person':
     person_phone = st.text_input('Enter Person Phone')
     person_email = st.text_input('Enter Person Email')
     person_roomid = st.text_input('Enter Person RoomID')
+    person_password = st.text_input('Enter Person Password')
     if  st.button('Save Details'):
         collection = db.Users
         new_user = {
@@ -172,7 +173,8 @@ elif menu == 'Person':
         "username": person_username,
         "phone_number": person_phone,
         "emailid": person_email,
-        "roomid":person_roomid
+        "roomid":person_roomid,
+        "password":person_password
         }
         result = collection.insert_one(new_user)
 
