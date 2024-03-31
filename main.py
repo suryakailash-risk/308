@@ -31,7 +31,7 @@ def check_password():
     def login_form():
         """Form with widgets to collect user information"""
         with st.form("Credentials"):
-            st.text_input("Username", key="username")
+            tempusername=st.text_input("Username", key="username")
             st.text_input("Password", type="password", key="password")
             st.form_submit_button("Log in", on_click=password_entered)
 
@@ -80,7 +80,6 @@ if menu == 'You Owe Me':
         collection = db.Split
         users = collection.find({"payto":"Surya","paid":False})
         temp=0
-        st.text_input(tempusername)
         for item in users:
             col1, col2,col3 = st.columns(3)
             with col1:
