@@ -24,7 +24,7 @@ except Exception as e:
 import hmac
 import streamlit as st
 
-
+tempusername=""
 def check_password():
     """Returns `True` if the user had a correct password."""
 
@@ -45,6 +45,7 @@ def check_password():
         ):
             st.session_state["password_correct"] = True
             del st.session_state["password"]  # Don't store the username or password.
+            tempusername=session_state["username"]
         else:
             st.session_state["password_correct"] = False
 
@@ -72,7 +73,7 @@ hide_streamlit_style = """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 st.title('Budget Application')
 st.sidebar.title('Menu')
-print(session_state["username"])
+print(tempusername)
 menu = st.sidebar.radio('Select an option', ['You Owe Me', 'Add Split','Person','I Owe You','My Budget'])
 if menu == 'You Owe Me':
     option = st.selectbox("Select", ("Yet to get Payment", "Have already paid"), placeholder="Select contact method...",)
