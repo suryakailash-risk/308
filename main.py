@@ -160,7 +160,7 @@ elif menu == 'Add Split':
 
 
 elif menu == 'Person':
-    if tempusername=="surya":
+    if tempusername=="Surya":
         person_id = st.text_input('Enter Person Name')
         person_username = st.text_input('Enter Person Username')
         person_phone = st.text_input('Enter Person Phone')
