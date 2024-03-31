@@ -45,7 +45,6 @@ def check_password():
         ):
             st.session_state["password_correct"] = True
             del st.session_state["password"]  # Don't store the username or password.
-            tempusername=st.session_state["username"]
         else:
             st.session_state["password_correct"] = False
 
@@ -78,7 +77,7 @@ if menu == 'You Owe Me':
     option = st.selectbox("Select", ("Yet to get Payment", "Have already paid"), placeholder="Select contact method...",)
     if option == "Yet to get Payment":
         collection = db.Split
-        users = collection.find({"payto":"Surya","paid":False})
+        users = collection.find({"payto":tempusername,"paid":False})
         temp=0
         for item in users:
             col1, col2,col3 = st.columns(3)
@@ -97,7 +96,7 @@ if menu == 'You Owe Me':
             temp=temp+1
     if option == "Have already paid":
         collection = db.Split
-        users = collection.find({"payto":"Surya","paid":True})
+        users = collection.find({"payto":tempusername,"paid":True})
         temp=0
         for item in users:
             col1, col2,col3 = st.columns(3)
@@ -179,7 +178,7 @@ elif menu == 'Person':
 
 elif menu == 'I Owe You':
     collection = db.Split
-    users = collection.find({"name":"Surya","paid":False})
+    users = collection.find({"name":tempusername,"paid":False})
     temp=0
     for item in users:
         col1, col2,col3 = st.columns(3)
@@ -198,7 +197,7 @@ elif menu == 'My Budget':
     myquery = {}
     if  st.button("Search"):
         collection = db.Split
-        users = collection.find({"name":"Surya","date": {"$gte": start_date, "$lte": end_date}})
+        users = collection.find({"name":tempusername,"date": {"$gte": start_date, "$lte": end_date}})
         temp=0
         df = pd.DataFrame(list(users))
         del df["_id"]
