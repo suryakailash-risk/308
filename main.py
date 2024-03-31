@@ -73,7 +73,6 @@ hide_streamlit_style = """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 st.title('Budget Application')
 st.sidebar.title('Menu')
-st.write(tempusername)
 menu = st.sidebar.radio('Select an option', ['You Owe Me', 'Add Split','Person','I Owe You','My Budget'])
 if menu == 'You Owe Me':
     option = st.selectbox("Select", ("Yet to get Payment", "Have already paid"), placeholder="Select contact method...",)
@@ -81,6 +80,7 @@ if menu == 'You Owe Me':
         collection = db.Split
         users = collection.find({"payto":"Surya","paid":False})
         temp=0
+        st.write(tempusername)
         for item in users:
             col1, col2,col3 = st.columns(3)
             with col1:
