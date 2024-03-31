@@ -80,7 +80,7 @@ if menu == 'You Owe Me':
         collection = db.Split
         users = collection.find({"payto":"Surya","paid":False})
         temp=0
-        st.write(tempusername)
+        st.text_input("hi",value=streamlit123)
         for item in users:
             col1, col2,col3 = st.columns(3)
             with col1:
