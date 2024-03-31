@@ -76,8 +76,8 @@ menu = st.sidebar.radio('Select an option', ['You Owe Me', 'Add Split','Person',
 collection_user = db.Split
 users_details = collection_user.find({"payto":tempusername,"paid":False})
 users_details = pd.DataFrame(list(users_details))
-tempusername=users_details['name']
-print(tempusername)
+# tempusername=users_details['name']
+print(users_details)
 if menu == 'You Owe Me':
     option = st.selectbox("Select", ("Yet to get Payment", "Have already paid"), placeholder="Select contact method...",)
     if option == "Yet to get Payment":
