@@ -45,7 +45,7 @@ def check_password():
         ):
             st.session_state["password_correct"] = True
             del st.session_state["password"]  # Don't store the username or password.
-            tempusername=session_state["username"]
+            tempusername=st.session_state["username"]
         else:
             st.session_state["password_correct"] = False
 
