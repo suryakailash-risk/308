@@ -45,7 +45,6 @@ def check_password():
         ):
             st.session_state["password_correct"] = True
             del st.session_state["password"]  # Don't store the username or password.
-            del st.session_state["username"]
         else:
             st.session_state["password_correct"] = False
 
@@ -64,10 +63,6 @@ if not check_password():
     st.stop()
 
 # Main Streamlit app starts here
-st.write("Here goes your normal Streamlit app...")
-st.button("Click me")
-USERNAME = "admin"
-PASSWORD = "password"
 hide_streamlit_style = """
                 <style>
                 #MainMenu {visibility: hidden;}
@@ -77,6 +72,7 @@ hide_streamlit_style = """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 st.title('Budget Application')
 st.sidebar.title('Menu')
+print(session_state["username"])
 menu = st.sidebar.radio('Select an option', ['You Owe Me', 'Add Split','Person','I Owe You','My Budget'])
 if menu == 'You Owe Me':
     option = st.selectbox("Select", ("Yet to get Payment", "Have already paid"), placeholder="Select contact method...",)
