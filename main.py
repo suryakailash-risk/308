@@ -34,6 +34,11 @@ def check_password():
             tempusername=st.text_input("Username", key="username")
             st.text_input("Password", type="password", key="password")
             st.form_submit_button("Log in", on_click=password_entered)
+            collection_user = db.Split
+            users_details = collection_user.find({"payto":tempusername,"paid":False})
+            users_details = pd.DataFrame(list(users_details))
+            # tempusername=users_details['name']
+            print(users_details)
 
     def password_entered():
         """Checks whether a password entered by the user is correct."""
@@ -73,11 +78,6 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 st.title('Budget Application')
 st.sidebar.title('Menu')
 menu = st.sidebar.radio('Select an option', ['You Owe Me', 'Add Split','Person','I Owe You','My Budget'])
-collection_user = db.Split
-users_details = collection_user.find({"payto":tempusername,"paid":False})
-users_details = pd.DataFrame(list(users_details))
-# tempusername=users_details['name']
-print(users_details)
 if menu == 'You Owe Me':
     option = st.selectbox("Select", ("Yet to get Payment", "Have already paid"), placeholder="Select contact method...",)
     if option == "Yet to get Payment":
