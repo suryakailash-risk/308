@@ -34,8 +34,8 @@ def check_password():
             tempusername=st.text_input("Username", key="username")
             st.text_input("Password", type="password", key="password")
             st.form_submit_button("Log in", on_click=password_entered)
-            collection_user = db.Split
-            users_details = collection_user.find({"payto":tempusername,"paid":False})
+            collection_user = db.Users
+            users_details = collection_user.find({"name":tempusername})
             users_details = pd.DataFrame(list(users_details))
             # tempusername=users_details['name']
             print(users_details)
