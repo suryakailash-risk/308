@@ -23,7 +23,7 @@ except Exception as e:
 
 import hmac
 import streamlit as st
-
+users_details=""
 tempusername=""
 def check_password():
     """Returns `True` if the user had a correct password."""
@@ -76,13 +76,13 @@ hide_streamlit_style = """
                 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 st.title('Budget Application')
-st.sidebar.title('Menu')
+st.sidebar.title(users_details)
 menu = st.sidebar.radio('Select an option', ['You Owe Me', 'Add Split','Person','I Owe You','My Budget'])
 if menu == 'You Owe Me':
     option = st.selectbox("Select", ("Yet to get Payment", "Have already paid"), placeholder="Select contact method...",)
     if option == "Yet to get Payment":
         collection = db.Split
-        users = collection.find({"payto":tempusername,"paid":False})
+        users = collection.find({"payto":users_details,"paid":False})
         temp=0
         for item in users:
             col1, col2,col3 = st.columns(3)
@@ -101,7 +101,7 @@ if menu == 'You Owe Me':
             temp=temp+1
     if option == "Have already paid":
         collection = db.Split
-        users = collection.find({"payto":tempusername,"paid":True})
+        users = collection.find({"payto":users_details,"paid":True})
         temp=0
         for item in users:
             col1, col2,col3 = st.columns(3)
@@ -165,7 +165,7 @@ elif menu == 'Add Split':
 
 
 elif menu == 'Person':
-    if tempusername=="Surya":
+    if users_details=="Surya":
         person_id = st.text_input('Enter Person Name')
         person_username = st.text_input('Enter Person Username')
         person_phone = st.text_input('Enter Person Phone')
@@ -186,7 +186,7 @@ elif menu == 'Person':
 
 elif menu == 'I Owe You':
     collection = db.Split
-    users = collection.find({"name":tempusername,"paid":False})
+    users = collection.find({"name":users_details,"paid":False})
     temp=0
     for item in users:
         col1, col2,col3 = st.columns(3)
@@ -205,7 +205,7 @@ elif menu == 'My Budget':
     myquery = {}
     if  st.button("Search"):
         collection = db.Split
-        users = collection.find({"name":tempusername,"date": {"$gte": start_date, "$lte": end_date}})
+        users = collection.find({"name":users_details,"date": {"$gte": start_date, "$lte": end_date}})
         temp=0
         df = pd.DataFrame(list(users))
         del df["_id"]
